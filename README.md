@@ -18,14 +18,6 @@ A aplicação também conta com um pequeno painel com  clima, data, horário, e 
 
 No lado direito do painel superior, você pode selecionar 8 diferentes tipos de mapas, cada um com seu conjunto de imagens e estilos.
 
-<i>Exemplo:</i>
-
-⠀Dark⠀|Satellite
------|-----
-![](./src/assets/readme/example1.png)  |  ![](./src/assets/readme/example2.png)
-
----
-
 <h3> Tecnologias utilizadas </h3>
 <ul>
 <li>
