@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Calculadora Geografica</title>
+    <link rel="icon" href="./src/assets/icon.png">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    
+    <link rel="stylesheet" href="./src/main.css">
+    <link rel="stylesheet" href="./src/map/create.css">
+    <link rel="stylesheet" href="./src/map/components/css/popup.css">
+    <link rel="stylesheet" href="./src/map/components/css/loading.css">
+
+    <link rel="stylesheet" href="./src/menu/css/menu.css">
+    <link rel="stylesheet" href="./src/menu/css/styleMenu.css">
+    <link rel="stylesheet" href="./src/menu/css/details.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" defer></script>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.js" integrity="sha384-N2S8y7hRzXUPiepaSiUvBH1ZZ7Tc/ZfchhbPdvOE5v3aBBCIepq9l+dBJPFdo1ZJ" crossorigin="anonymous"></script>
+
+    <script src="./src/map/create.js" defer></script>
+    <script src="./src/scripts/reset.js" defer></script>
+    <script src="./src/scripts/main.js" defer></script>
+        
+    <script src="./src/map/components/line.js"></script>
+    <script src="./src/map/components/marker.js"></script>
+    <script src="./src/map/components/zoom.js"></script>
+    <script src="./src/map/components/tiles/tiles.js" defer></script>
+
+    <script src="./src/menu/details.js"></script>
+    <script src="./src/menu/arrow.js" defer></script>
+
+    <script src="./src/scripts/calculator.js"></script>
+</head>
+<body>
+
+    <section id="loading" class="loading noZoom">
+        <p id="loadingMsg">Carregando </p>
+        <span style="transform:scale(2)">
+            <div class="dot-bricks"></div>
+        </span>
+    </section>
+
+    <section class="map">
+        <div class="distanceBlocks">
+        </div>
+
+        <div id="map">
+        </div>
+    </section>
+
+    <menu id="menu" class="noZoom">
+        <img class="arrow" src="./src/assets/arrow.svg" onclick="hide()"></img>
+        <span>
+            <input type="text" id="mainAddress" placeholder="Endereço principal">
+            <button title="Pesquisar endereço principal" id="mainButton" onclick="mainSearch()">
+                <img src="./src/assets/search.svg" width="50%"></img>
+            </button>
+        </span>
+
+        <span>
+            <input type="text" id="secAddress" placeholder="Endereços secundários">
+            <button title="Pesquisar endereço secundário" id="secButton" onclick="secSearch()">
+                <img src="./src/assets/search.svg" width="50%"></img>
+            </button>
+        </span>
+
+        <div id="styleMenu" class="styleMenu">
+            <div>
+                <div class="weatherWrapper">
+                    <ul>
+                        <li>
+                            <img src="" id="weatherIcon" width="50px">
+                            <div class="weatherNumbers">
+                                <p id="celcius" class="w_h"></p>
+                                <p class="fahrenheit w_h"></p>
+                            </div>
+                        </li>
+                        <li id="date" class="date w_h"></li>
+                        <li class="time">
+                            <a id="hour" class="w_h"></a>
+                            <a id="timezone" class="w_h"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="iconsWrapper">
+                        <button title="Limpar todos os campos" onclick="reset()">
+                            <img src="./src/assets/trashIcon.svg" width="15px">
+                        </button>
+
+                        <button title="Compartilhar endereço selecionado" onclick="share()" class="shareIcon">
+                            <img src="./src/assets/shareIcon.svg" width="20px">
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    
+                </div>
+            </div>
+            
+            <div class="mapSelectorWrapper">
+                <img src="./src/assets/caretLeft.svg" onclick="changeValue('-')" class="caret">
+                    <div class="mapSelector" value="0"></div>
+                <img src="./src/assets/caretRight.svg" onclick="changeValue('+')" class="caret">
+            </div>
+        </div>
+
+        <div class="details">
+            <img src="" id="flag">
+            <ul>
+                <li id="country" class="detail w_h">
+                </li>
+
+                <li id="state" class="detail w_h">
+                </li>
+
+                <li id="city" class="detail w_h">
+                </li>
+
+                <li id="county" class="detail w_h">
+                </li>
+
+                <li id="suburb" class="detail w_h">
+                </li>
+
+                <li id="road" class="detail w_h">
+                </li>
+            </ul>
+        </div>
+    </menu>
+</body>
+</html>
