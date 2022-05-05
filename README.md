@@ -5,7 +5,7 @@ Utilize a barra de pesquisa correspondente ou clique no mapa para selecionar um 
 
 As distâncias serão calculadas a partir do endereço principal em linha reta.
 
-<img src="./src/assets/readme/example.png">
+
 </p>
 
 A aplicação também conta com um pequeno painel com  clima, data, horário, e outras informações do local selecionado. 
